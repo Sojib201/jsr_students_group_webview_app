@@ -43,7 +43,7 @@ class _SplashScreenState extends State<SplashScreen>
     final connectivity = Get.find<ConnectivityController>();
 
     if (connectivity.isConnected.value) {
-      Get.offNamed(AppRoutes.webview);
+      Get.offNamed(AppRoutes.webView);
     } else {
       Get.offNamed(AppRoutes.noInternet);
     }
@@ -77,7 +77,6 @@ class _SplashScreenState extends State<SplashScreen>
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Logo / Icon
               ScaleTransition(
                 scale: _scaleAnim,
                 child: Container(
@@ -110,7 +109,6 @@ class _SplashScreenState extends State<SplashScreen>
 
               const SizedBox(height: 28),
 
-              // App Name
               const Text(
                 'JSR Students Group',
                 style: TextStyle(
@@ -134,7 +132,6 @@ class _SplashScreenState extends State<SplashScreen>
 
               const SizedBox(height: 60),
 
-              // Spinner
               const SpinKitThreeBounce(
                 color: Colors.white70,
                 size: 30,

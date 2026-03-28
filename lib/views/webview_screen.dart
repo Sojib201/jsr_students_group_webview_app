@@ -16,7 +16,6 @@ class WebViewScreen extends StatelessWidget {
     final connectivity = Get.find<ConnectivityController>();
 
     return Obx(() {
-      // If internet lost → show no internet screen inline
       if (!connectivity.isConnected.value) {
         return _buildNoInternetInline(controller);
       }
@@ -37,7 +36,6 @@ class WebViewScreen extends StatelessWidget {
           appBar: _buildAppBar(controller),
           body: Stack(
             children: [
-              // WebView
               Obx(() {
                 if (controller.hasError.value) {
                   return ErrorView(
@@ -50,7 +48,6 @@ class WebViewScreen extends StatelessWidget {
                 );
               }),
 
-              // Loading overlay
               Obx(() {
                 if (controller.isLoading.value) {
                   return LoadingOverlay(
@@ -129,41 +126,37 @@ class WebViewScreen extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          // Back
+          _NavButton(
+            icon: Icons.home_rounded,
+            onTap: controller.loadHome,
+          ),
+
           Obx(() => _NavButton(
                 icon: Icons.arrow_back_ios_rounded,
                 onTap: controller.canGoBack.value ? controller.goBack : null,
               )),
 
-          // Forward
           Obx(() => _NavButton(
                 icon: Icons.arrow_forward_ios_rounded,
                 onTap:
                     controller.canGoForward.value ? controller.goForward : null,
               )),
 
-          // Home
-          _NavButton(
-            icon: Icons.home_rounded,
-            onTap: controller.loadHome,
-          ),
-
-          // Share
-          _NavButton(
-            icon: Icons.share_rounded,
-            onTap: () {
-              Get.snackbar(
-                'Share',
-                'jsrstudentsgroup.com',
-                snackPosition: SnackPosition.BOTTOM,
-                backgroundColor: AppTheme.primaryColor,
-                colorText: Colors.white,
-                margin: const EdgeInsets.all(12),
-                borderRadius: 10,
-                duration: const Duration(seconds: 2),
-              );
-            },
-          ),
+          // _NavButton(
+          //   icon: Icons.share_rounded,
+          //   onTap: () {
+          //     Get.snackbar(
+          //       'Share',
+          //       'jsrstudentsgroup.com',
+          //       snackPosition: SnackPosition.BOTTOM,
+          //       backgroundColor: AppTheme.primaryColor,
+          //       colorText: Colors.white,
+          //       margin: const EdgeInsets.all(12),
+          //       borderRadius: 10,
+          //       duration: const Duration(seconds: 2),
+          //     );
+          //   },
+          // ),
         ],
       ),
     );

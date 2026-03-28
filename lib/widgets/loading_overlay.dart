@@ -10,7 +10,6 @@ class LoadingOverlay extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // Progress bar at top
         LinearProgressIndicator(
           value: progress > 0 ? progress / 100 : null,
           backgroundColor: Colors.transparent,

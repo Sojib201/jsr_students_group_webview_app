@@ -11,10 +11,9 @@ class NoInternetScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final connectivity = Get.find<ConnectivityController>();
 
-    // Auto-navigate when internet comes back
     ever(connectivity.isConnected, (connected) {
       if (connected) {
-        Get.offNamed(AppRoutes.webview);
+        Get.offNamed(AppRoutes.webView);
       }
     });
 
@@ -78,7 +77,7 @@ class NoInternetScreen extends StatelessWidget {
               onPressed: () {
                 final c = Get.find<ConnectivityController>();
                 if (c.isConnected.value) {
-                  Get.offNamed(AppRoutes.webview);
+                  Get.offNamed(AppRoutes.webView);
                 } else {
                   Get.snackbar(
                     'No connection',
@@ -110,7 +109,6 @@ class NoInternetScreen extends StatelessWidget {
 
             const SizedBox(height: 16),
 
-            // Auto detect text
             Obx(() => AnimatedOpacity(
                   opacity: connectivity.isConnected.value ? 1 : 0.5,
                   duration: const Duration(milliseconds: 300),

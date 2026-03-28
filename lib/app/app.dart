@@ -25,7 +25,7 @@ class JSRApp extends StatelessWidget {
 
 abstract class AppRoutes {
   static const splash = '/';
-  static const webview = '/webview';
+  static const webView = '/webView';
   static const noInternet = '/no-internet';
 }
 
@@ -36,7 +36,7 @@ abstract class AppPages {
       page: () => const SplashScreen(),
     ),
     GetPage(
-      name: AppRoutes.webview,
+      name: AppRoutes.webView,
       page: () => const WebViewScreen(),
     ),
     GetPage(

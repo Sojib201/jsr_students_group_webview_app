@@ -48,7 +48,6 @@ class JSRWebViewController extends GetxController {
             errorMessage.value = error.description;
           },
           onNavigationRequest: (request) {
-            // Allow all navigation within the site
             return NavigationDecision.navigate;
           },
         ),
@@ -83,8 +82,8 @@ class JSRWebViewController extends GetxController {
   Future<bool> handleBackPress() async {
     if (await webViewController.canGoBack()) {
       await webViewController.goBack();
-      return false; // Don't exit
+      return false;
     }
-    return true; // Exit app
+    return true;
   }
 }
