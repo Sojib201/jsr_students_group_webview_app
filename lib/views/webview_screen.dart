@@ -33,32 +33,34 @@ class WebViewScreen extends StatelessWidget {
           }
         },
         child: Scaffold(
-          appBar: _buildAppBar(controller),
-          body: Stack(
-            children: [
-              Obx(() {
-                if (controller.hasError.value) {
-                  return ErrorView(
-                    message: controller.errorMessage.value,
-                    onRetry: controller.reload,
+          //appBar: _buildAppBar(controller),
+          body: SafeArea(
+            child: Stack(
+              children: [
+                Obx(() {
+                  if (controller.hasError.value) {
+                    return ErrorView(
+                      message: controller.errorMessage.value,
+                      onRetry: controller.reload,
+                    );
+                  }
+                  return WebViewWidget(
+                    controller: controller.webViewController,
                   );
-                }
-                return WebViewWidget(
-                  controller: controller.webViewController,
-                );
-              }),
+                }),
 
-              Obx(() {
-                if (controller.isLoading.value) {
-                  return LoadingOverlay(
-                    progress: controller.loadingProgress.value,
-                  );
-                }
-                return const SizedBox.shrink();
-              }),
-            ],
+                Obx(() {
+                  if (controller.isLoading.value) {
+                    return LoadingOverlay(
+                      progress: controller.loadingProgress.value,
+                    );
+                  }
+                  return const SizedBox.shrink();
+                }),
+              ],
+            ),
           ),
-          bottomNavigationBar: _buildBottomBar(controller),
+          //bottomNavigationBar: _buildBottomBar(controller),
         ),
       );
     });

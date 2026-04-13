@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../app/app.dart';
-import '../app/app_theme.dart';
 import '../controllers/connectivity_controller.dart';
 
 class SplashScreen extends StatefulWidget {
