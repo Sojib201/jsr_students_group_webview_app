@@ -58,86 +58,19 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xFF0D1B4B),
-              Color(0xFF1A237E),
-              Color(0xFF283593),
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-        ),
-        child: FadeTransition(
-          opacity: _fadeAnim,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ScaleTransition(
-                scale: _scaleAnim,
-                child: Container(
-                  width: 110,
-                  height: 110,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(28),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.3),
-                        blurRadius: 24,
-                        offset: const Offset(0, 8),
-                      ),
-                    ],
-                  ),
-                  child: Center(
-                    child: Text(
-                      'JSR',
-                      style: TextStyle(
-                        fontSize: 32,
-                        fontWeight: FontWeight.w900,
-                        color: AppTheme.primaryColor,
-                        letterSpacing: 2,
-                      ),
-                    ),
-                  ),
-                ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Center(
+              child: SizedBox(
+                height: 200,
+                width: 200,
+                child: Image.asset("assets/jsr_logo.jpeg"),
               ),
-
-              const SizedBox(height: 28),
-
-              const Text(
-                'JSR Students Group',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1.2,
-                ),
-              ),
-
-              const SizedBox(height: 8),
-
-              Text(
-                'jsrstudentsgroup.com',
-                style: TextStyle(
-                  color: Colors.white.withOpacity(0.6),
-                  fontSize: 14,
-                  letterSpacing: 0.5,
-                ),
-              ),
-
-              const SizedBox(height: 60),
-
-              const SpinKitThreeBounce(
-                color: Colors.white70,
-                size: 30,
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
